@@ -15,7 +15,6 @@ RUN \
         jq\
         tzdata \
         xz-utils \
-        nginx \
     \
     && S6_ARCH="${BUILD_ARCH}" \
     && if [ "${BUILD_ARCH}" = "i386" ]; then S6_ARCH="i686"; \
@@ -37,14 +36,12 @@ RUN \
     && mkdir -p /etc/fix-attrs.d \
     && mkdir -p /etc/services.d
 
-COPY nginx /etc/nginx/sites-available/default
-
 # Copy root filesystem
 ADD --link rootfs /
 
 ENV CONFIG_PATH=/data/options.json
 LABEL \
-  io.hass.version="2.3.4.2-alpha.3" \
+  io.hass.version="2.3.4.2-alpha.4" \
   io.hass.type="addon" \
   io.hass.arch="aarch64|amd64"
 
@@ -58,8 +55,6 @@ RUN mkdir -p /tmp/bashio \
     && ln -s /usr/lib/bashio/bashio /usr/bin/bashio
 
 RUN mkdir -p /run/s6/container_environment
-
-RUN apt-get -y update && apt-get -y install nginx
 
 RUN chmod a+x /run.sh
 WORKDIR /app/server

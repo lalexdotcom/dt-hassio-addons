@@ -1,5 +1,5 @@
 name: CodeProject AI.Server (CPU)
-version: 2.3.4.2-alpha.3
+version: 2.3.4.2-alpha.4
 url: https://hub.docker.com/r/codeproject/ai-server
 # image: ghcr.io/skrashevich/hassio-addon-ai.server-{arch}
 panel_icon: mdi:face-recognition
@@ -14,7 +14,7 @@ init: false
 full_access: false
 usb: true
 video: true
-ingress: true
+ingress: false
 privileged:
     - PERFMON
 ports:
