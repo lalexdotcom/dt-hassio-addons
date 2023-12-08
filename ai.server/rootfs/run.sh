@@ -9,7 +9,7 @@ mkdir -p "$DATA_DIR"
 rm -rf /app/modules
 ln -sf "$MODULES_PATH" /app/modules
 
-cat /app/server/appsettings.json | sed -e 's/\/\/ .*$//g' | jq ".ModuleOptions.ModulesPath=\"$MODULES_PATH\"" > /app/server/appsettings.json.new
-mv /app/server/appsettings.json.new /app/server/appsettings.json
+# cat /app/server/appsettings.json | sed -e 's/\/\/ .*$//g' | jq ".ModuleOptions.ModulesPath=\"$MODULES_PATH\"" > /app/server/appsettings.json.new
+# mv /app/server/appsettings.json.new /app/server/appsettings.json
 
 cd /app/server && dotnet ./CodeProject.AI.Server.dll --ApplicationDataDir="$DATA_DIR"
